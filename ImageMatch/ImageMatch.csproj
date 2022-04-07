@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
+    <PackageReference Include="BlazorInputFile" Version="0.2.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Update="Pages\Index.razor">
+      <DependentUpon>Image.razor.cs</DependentUpon>
+    </AdditionalFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Index.razor">
+      <DependentUpon>Index.razor.cs</DependentUpon>
+    </Content>
+  </ItemGroup>
+
+</Project>
