@@ -14,11 +14,13 @@ public sealed partial class Index
   private async Task LoadFile1(InputFileChangeEventArgs e)
   {
     _img1 = await GetImage(e);
+    _text = string.Empty;
   }
 
   private async Task LoadFile2(InputFileChangeEventArgs e)
   {
     _img2 = await GetImage(e);
+    _text = string.Empty;
   }
 
   private async Task<Image<Rgba32>> GetImage(InputFileChangeEventArgs e)
@@ -39,16 +41,16 @@ public sealed partial class Index
     return Image.Load<Rgba32>(ms);
   }
 
-  private async Task OnCheck()
+  private async Task OnMatch()
   {
-    _text = $"Comparing images ...";
+    _text = $"Matching images ...";
     StateHasChanged();
     await Task.Run(() =>
     {
       var imgHash1 = new ImgHash(_img1);
       var imgHash2 = new ImgHash(_img2);
-      var similarity = imgHash1.CompareWith(imgHash2);
-      _text = $"Similarity = {similarity}%";
+      var match = imgHash1.CompareWith(imgHash2);
+      _text = $"Match = {match}%";
     });
   }
 }
