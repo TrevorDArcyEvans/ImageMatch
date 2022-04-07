@@ -64,5 +64,5 @@
   Upload image 2
 </div>
 
-<button @onclick="OnCheck">Compare</button>
+<button @onclick="@(async () => await OnMatch())">Match</button>
 <textarea @bind="_text" readonly style="width: 100%;"></textarea>
