@@ -14,7 +14,7 @@ public sealed partial class Index
   private string _img1Url { get; set; } = string.Empty;
   private string _img2Url { get; set; } = string.Empty;
   private string _text { get; set; }
-  private bool _canMatch => _img1 is not null && _img2 is not null;
+  private bool _canMatch { get => _img1 is not null && _img2 is not null; }
 
   private async Task LoadFile1(InputFileChangeEventArgs e)
   {
