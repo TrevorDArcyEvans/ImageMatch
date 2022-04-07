@@ -34,7 +34,6 @@ public sealed class ImgHash
     // resize img to 16x16px (by default) or with configured size 
     img.Mutate(ctx => ctx
       .Resize(new Size(hashSideSize, hashSideSize))
-      //.Grayscale(GrayscaleMode.Bt709)
       .BlackWhite());
 
     var bwLevels = new List<bool>();
