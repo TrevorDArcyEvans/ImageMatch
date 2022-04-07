@@ -8,9 +8,10 @@
     width: 100px;
   }
   
-  #messageEmbed, #messageExtract
+  .imagePreview
   {
-    width: 80%;
+    width: 64px;
+    height: 64px;
   }
   
   .dropzone
@@ -55,6 +56,7 @@
     OnChange="@(async (e) => await LoadFile1(e))"
     accept="image/png,image/gif,image/jpeg"/>
   @_img1FileName
+  <img src="@_img1Url" class="imagePreview">
 </div>
 
 <div class="dropzone rounded">
@@ -62,7 +64,8 @@
     OnChange="@(async (e) => await LoadFile2(e))"
     accept="image/png,image/gif,image/jpeg"/>
   @_img2FileName
+  <img src="@_img2Url" class="imagePreview">
 </div>
 
-<button @onclick="@(async () => await OnMatch())">Match</button>
+<button @onclick="@(async () => await OnMatch())" disabled="@(!_canMatch)">Match</button>
 <textarea @bind="_text" readonly style="width: 100%;"></textarea>
