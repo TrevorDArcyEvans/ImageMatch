@@ -4,18 +4,12 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
-[Serializable]
-public class ImgHash
+public sealed class ImgHash
 {
-  private readonly int _hashSide;
-
   private bool[] _hashData;
-  public bool[] HashData => _hashData;
 
   public ImgHash(Image<Rgba32> img, int hashSideSize = 16)
   {
-    _hashSide = hashSideSize;
-
     _hashData = GenerateFromImage(img, hashSideSize);
   }
 
@@ -25,22 +19,25 @@ public class ImgHash
   /// <returns>% of similarity</returns>
   public double CompareWith(ImgHash compareWith)
   {
-    if (HashData.Length != compareWith.HashData.Length)
+    if (_hashData.Length != compareWith._hashData.Length)
     {
-      throw new Exception("Cannot compare hashes with different sizes");
+      throw new ArgumentException("Cannot compare hashes with different sizes");
     }
 
-    var differenceCounter = HashData.Where((t, i) => t != compareWith.HashData[i]).Count();
+    var numDiffs = _hashData.Where((t, i) => t != compareWith._hashData[i]).Count();
 
-    return 100 - differenceCounter / 100.0 * HashData.Length / 2.0;
+    return 100.0 - numDiffs / 100.0 * _hashData.Length / 2.0;
   }
 
   private static bool[] GenerateFromImage(Image<Rgba32> img, int hashSideSize = 16)
   {
     // resize img to 16x16px (by default) or with configured size 
-    img.Mutate(ctx => ctx.Resize(new Size(hashSideSize, hashSideSize)).Grayscale(GrayscaleMode.Bt709));
+    img.Mutate(ctx => ctx
+      .Resize(new Size(hashSideSize, hashSideSize))
+      //.Grayscale(GrayscaleMode.Bt709)
+      .BlackWhite());
 
-    var grayLevels = new List<int>();
+    var bwLevels = new List<bool>();
     img.ProcessPixelRows(acc =>
     {
       for (var y = 0; y < acc.Height; y++)
@@ -49,16 +46,12 @@ public class ImgHash
         for (var x = 0; x < pxRow.Length - 1; x++)
         {
           ref var px = ref pxRow[x];
-          var module = (30 * px.R + 59 * px.G + 11 * px.B) / 100;
-          grayLevels.Add(module);
+          var isWhite = (px.R + px.G + px.B) > 45;
+          bwLevels.Add(isWhite);
         }
       }
     });
 
-    var sortedGrayLevels = grayLevels.ToArray();
-    Array.Sort(sortedGrayLevels);
-    var median = grayLevels[sortedGrayLevels.Length / 2];
-
-    return grayLevels.Select(level => level < median).ToArray();
+    return bwLevels.ToArray();
   }
 }
