@@ -54,14 +54,14 @@
   <InputFile
     OnChange="@(async (e) => await LoadFile1(e))"
     accept="image/png,image/gif,image/jpeg"/>
-  Upload image 1
+  @_img1FileName
 </div>
 
 <div class="dropzone rounded">
   <InputFile
     OnChange="@(async (e) => await LoadFile2(e))"
     accept="image/png,image/gif,image/jpeg"/>
-  Upload image 2
+  @_img2FileName
 </div>
 
 <button @onclick="@(async () => await OnMatch())">Match</button>

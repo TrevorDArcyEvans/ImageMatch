@@ -10,20 +10,24 @@ public sealed partial class Index
   private Image<Rgba32> _img1;
   private Image<Rgba32> _img2;
   private string _text { get; set; }
+  private string _img1FileName { get; set; } = "Upload image 1";
+  private string _img2FileName { get; set; } = "Upload image 1";
 
   private async Task LoadFile1(InputFileChangeEventArgs e)
   {
     _img1 = await GetImage(e);
-    _text = string.Empty;
+    _img1FileName = e.File.Name;
+    _text = _img1 is null ? $"<b>{_img1FileName}</b> --> unknown format" : string.Empty;
   }
 
   private async Task LoadFile2(InputFileChangeEventArgs e)
   {
     _img2 = await GetImage(e);
-    _text = string.Empty;
+    _img2FileName = e.File.Name;
+    _text = _img2 is null ? $"<b>{_img2FileName}</b> --> unknown format" : string.Empty;
   }
 
-  private async Task<Image<Rgba32>> GetImage(InputFileChangeEventArgs e)
+  private static async Task<Image<Rgba32>> GetImage(InputFileChangeEventArgs e)
   {
     var data = e.File.OpenReadStream();
     var ms = new MemoryStream();
@@ -33,7 +37,6 @@ public sealed partial class Index
     var info = await Image.IdentifyAsync(ms);
     if (info is null)
     {
-      _text = $"<b>{e.File.Name}</b> --> unknown format";
       return null;
     }
 
