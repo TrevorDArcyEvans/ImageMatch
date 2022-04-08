@@ -11,11 +11,17 @@ public sealed partial class Index
   private Image<Rgba32> _img2;
   private string _img1FileName { get; set; } = "Upload image 1";
   private string _img2FileName { get; set; } = "Upload image 2";
-  private string _img1Url { get; set; } = string.Empty;
-  private string _img2Url { get; set; } = string.Empty;
+  private string _img1Url { get; set; } = GetDefaultImageString();
+  private string _img2Url { get; set; } = GetDefaultImageString();
   private string _text { get; set; }
   private bool _canMatch { get => _img1 is not null && _img2 is not null; }
 
+  protected override void OnInitialized()
+  {
+    _img1Url = GetDefaultImageString();
+    _img2Url = GetDefaultImageString();
+  }
+  
   private async Task LoadFile1(InputFileChangeEventArgs e)
   {
     _img1 = await GetImage(e);
@@ -55,6 +61,16 @@ public sealed partial class Index
     var buffers = new byte[imgFile.Size];
     await imgFile.OpenReadStream().ReadAsync(buffers);
     return $"data:{imgFile.ContentType};base64,{Convert.ToBase64String(buffers)}";    
+  }
+
+  private static string GetDefaultImageString()
+  {
+    var img = new Image<Rgba32>(Configuration.Default, 64, 64);
+    using var ms = new MemoryStream();
+    img.SaveAsPng(ms);
+    var bytes = ms.ToArray();
+    var imgStr = System.Text.Encoding.UTF8.GetString(bytes);
+    return imgStr;
   }
 
   private async Task OnMatch()
