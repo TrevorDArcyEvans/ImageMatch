@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using ImageMatch;
+using ImageMatch.UI.Web;
 
 #if DEBUG
 // Allow some time for debugger to attach to Blazor framework debugging proxy

@@ -1,4 +1,4 @@
-﻿namespace ImageMatch.Pages;
+﻿namespace ImageMatch.UI.Web.Pages;
 
 using ImagesComparator;
 using Microsoft.AspNetCore.Components.Forms;

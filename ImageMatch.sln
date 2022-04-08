@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMatch", "ImageMatch\ImageMatch.csproj", "{E682219C-AC2C-4651-8DAF-BDAA4DE75B5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMatch.UI.Web", "ImageMatch.UI.Web\ImageMatch.UI.Web.csproj", "{E682219C-AC2C-4651-8DAF-BDAA4DE75B5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
