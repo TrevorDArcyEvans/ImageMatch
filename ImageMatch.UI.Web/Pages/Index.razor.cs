@@ -69,8 +69,7 @@ public sealed partial class Index
     using var ms = new MemoryStream();
     img.SaveAsPng(ms);
     var bytes = ms.ToArray();
-    var imgStr = System.Text.Encoding.UTF8.GetString(bytes);
-    return imgStr;
+    return $"data:img/png;base64,{Convert.ToBase64String(bytes)}";    
   }
 
   private async Task OnMatch()
