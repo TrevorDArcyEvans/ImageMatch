@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMatch.UI.Web", "ImageM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagesComparator", "ImagesComparator\ImagesComparator.csproj", "{83FDB7E4-553C-4DA7-B6FF-1266C4FE3B5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMatch.UI.CLI", "ImageMatch.UI.CLI\ImageMatch.UI.CLI.csproj", "{DE8F38BB-2246-443A-9B20-84B63E59C108}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{83FDB7E4-553C-4DA7-B6FF-1266C4FE3B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83FDB7E4-553C-4DA7-B6FF-1266C4FE3B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83FDB7E4-553C-4DA7-B6FF-1266C4FE3B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8F38BB-2246-443A-9B20-84B63E59C108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8F38BB-2246-443A-9B20-84B63E59C108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8F38BB-2246-443A-9B20-84B63E59C108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8F38BB-2246-443A-9B20-84B63E59C108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
