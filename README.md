@@ -14,7 +14,7 @@ This give you ability to find duplicates/similar images.
 ```
 
 # Features
-* runs on .NET COre
+* runs on .NET Core
 * runs in browser with webassembly
 * commandline client
 
@@ -75,7 +75,6 @@ Similarly, large rotations will mean transformed pixels will be moved to other d
 blocks, again resulting in a lower match.
 
 </details>
-
 
 # Further work
 * possibly use discreet wavelet transform to improve matching
