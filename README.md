@@ -23,6 +23,9 @@ This give you ability to find duplicates/similar images.
 * Windows
 
 # Getting started
+
+<details>
+
 ```bash
 git clone https://github.com/TrevorDArcyEvans/ImageMatch.git
 cd ImageMatch/
@@ -38,6 +41,8 @@ dotnet build
 dotnet run
 ```
 open [ImageMatch](http://localhost:5229)
+
+</details>
 
 # Discussion
 
