@@ -18,6 +18,27 @@ This give you ability to find duplicates/similar images.
 * runs in browser with webassembly
 * commandline client
 
+# Prerequisites
+* .NET Core 6
+* Windows
+
+# Getting started
+```bash
+git clone https://github.com/TrevorDArcyEvans/ImageMatch.git
+cd ImageMatch/
+dotnet restore
+dotnet build
+```
+
+## Web UI
+```bash
+cd cd ImageMatch.UI.Web/
+dotnet restore
+dotnet build
+dotnet run
+```
+open [ImageMatch](http://localhost:5229)
+
 # Discussion
 
 <details>
