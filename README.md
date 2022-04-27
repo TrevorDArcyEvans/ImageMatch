@@ -38,7 +38,7 @@ dotnet build
 
 ## Web UI
 ```bash
-cd cd ImageMatch.UI.Web/
+cd ImageMatch.UI.Web/
 dotnet restore
 dotnet build
 dotnet run
